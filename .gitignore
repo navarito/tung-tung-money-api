@@ -34,7 +34,11 @@ Thumbs.db
 .claude/
 
 # Air (hot reload)
+.air.toml
 tmp/
+
+# Personal notes / planning files
+docss
 
 # Swagger generated docs (if auto-generated, optional)
 # docs/
