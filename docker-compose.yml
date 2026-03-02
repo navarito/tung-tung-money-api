@@ -3,14 +3,8 @@ services:
     build: .
     ports:
       - "8080:8080"
-    environment:
-      - DB_HOST=mysql
-      - DB_PORT=3306
-      - DB_USER=root
-      - DB_PASSWORD=password
-      - DB_NAME=tung-tung
-      - JWT_SECRET=3ac52be32336d01f2ed881099c6f13a60bcc0c1912c328d1b030cb32e4af5ae0ff46e07080df66c51c3ff04ef1f195c68fe52767063e88700c0ccce1a4bc5b18
-      - PORT=10005
+    env_file:
+      - .env
     depends_on:
       mysql:
         condition: service_healthy
@@ -21,8 +15,8 @@ services:
     ports:
       - "3306:3306"
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=tung-tung
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
